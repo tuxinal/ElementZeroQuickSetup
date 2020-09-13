@@ -44,7 +44,7 @@ else:
         if fileName.startswith("ElementZero"):
             os.rename(fileName,serverName)
     print("done!")
-print("checking for the latest minecraft version")
+print("checking for the latest minecraft version...")
 link, fileName = findWindowsLink()
 if os.path.exists(fileName):
     print("\nlatest BDS is already downloaded!")
@@ -54,11 +54,15 @@ mc = zipfile.ZipFile(fileName)
 mc.extractall(serverName)
 if os.path.exists("./start.sh"):
     os.remove("./start.sh")
-urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/start.sh","start.sh")
 fullDir = os.getcwd()+"/"+serverName
+urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/start.sh","start.sh")
 start = open("start.sh")
 startServer = open(serverName+"/start.sh","w+")
 startServer.write(start.read().replace("serverName",serverName).replace("dirName",fullDir))
+urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/stop.sh","stop.sh")
+stop = open("stop.sh")
+stopServer = open(serverName+"/stop.sh","w+")
+stopServer.write(stop.read().replace("serverName",serverName).replace("dirName",fullDir))
 if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
     os.remove(fileName)
