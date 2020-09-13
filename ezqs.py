@@ -52,6 +52,9 @@ else:
     urllib.request.urlretrieve(link,fileName)
 mc = zipfile.ZipFile(fileName)
 mc.extractall(serverName)
+if os.path.exists("./start.sh"):
+    os.remove("./start.sh")
+urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/start.sh","start.sh")
 fullDir = os.getcwd()+"/"+serverName
 start = open("start.sh")
 startServer = open(serverName+"/start.sh","w+")
@@ -60,5 +63,6 @@ if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
     os.remove(fileName)
     os.remove("version.html")
+    os.remove("start.sh")
     os.remove("ez.zip")
     print("done!")
