@@ -8,6 +8,7 @@ def findWindowsLink():
     if os.path.exists("./version.html"):
         os.remove("./version.html")
     urllib.request.urlretrieve("https://minecraft.net/en-us/download/server/bedrock/","./version.html")
+    # would be a bit nicer if this wasn't bash code
     link = subprocess.Popen(["grep -o 'https://minecraft.azureedge.net/bin-win/[^\"]*' {}".format("./version.html")]
         ,stdout=subprocess.PIPE,shell=True,universal_newlines=True)
     linkName = link.stdout.read().rsplit()[0]
@@ -51,6 +52,10 @@ else:
     urllib.request.urlretrieve(link,fileName)
 mc = zipfile.ZipFile(fileName)
 mc.extractall(serverName)
+fullDir = os.getcwd()+"/"+serverName
+start = open("start.sh")
+startServer = open(serverName+"/start.sh","w+")
+startServer.write(start.read().replace("serverName",serverName).replace("dirName",fullDir))
 if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
     os.remove(fileName)
