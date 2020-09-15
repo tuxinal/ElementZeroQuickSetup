@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 # Check if server is running
 if ! screen -list | grep -q "serverName"; then
   echo "Server is not currently running!"
