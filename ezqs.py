@@ -70,5 +70,6 @@ if input("delete downloaded files? [y,N]") in ("Y","y"):
     os.remove(fileName)
     os.remove("version.html")
     os.remove("start.sh")
+    os.remove("stop.sh")
     os.remove("ez.zip")
     print("done!")
