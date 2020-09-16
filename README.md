@@ -22,7 +22,6 @@ sudo apt install screen
 ```
 for other distros you have to figure it out yourself
 ## Usage
----
 first download the script using wget:
 ```bash
 wget https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/ezqs.py 
