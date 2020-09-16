@@ -9,7 +9,6 @@ this script is for automatically  setting up a minecraft BDS with ElementZero fo
 this project is heavily inspired by [James A. Chamber](https://github.com/TheRemote)'s minecraft bedrock server [script](https://github.com/TheRemote/MinecraftBedrockServer)
 
 ## Dependencies
----
 you need `docker`, `python` and `screen`
 
 for `docker` check out the official [docs](https://docs.docker.com/engine/install/)
