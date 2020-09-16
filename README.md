@@ -1,5 +1,5 @@
 # ElementZeroQuickSetup
-## a script for quickly setting up a minecraft BDS with ElementZero for linux
+### a script for quickly setting up a minecraft BDS with ElementZero for linux
 
 
 [Element Zero](https://github.com/Element-0/ElementZero) is a wine compatible modification to the windows bedrock dedicated server version with mod support 
