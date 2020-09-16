@@ -42,3 +42,5 @@ there should be a new folder in the same directory that you ran the script `cd` 
 - [ ] automatic world backups upon starting
  
 - [ ] check for updates upon starting
+
+- [ ] make a systemd service for auto starting
