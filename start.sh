@@ -27,7 +27,7 @@ cd dirname
 
 # Create backup
 if [ -d "worlds" ]; then
-    echo "Backing up server (to servername/backups folder)"
+    echo "Backing up server (to minecraftbe/servername/backups folder)"
     tar -pzvcf backups/$(date +%Y.%m.%d.%H.%M.%S).tar.gz worlds
 fi
 
@@ -57,4 +57,4 @@ fi
 
 echo "Starting Minecraft server.  To view window type screen -r servername"
 echo "To minimize the window and let the server run in the background, press Ctrl+A then Ctrl+D"
-screen -dmS servername /bin/bash -c "docker run --rm -ti --name servername -p 19132:19132/udp -v dirname/:/data codehz/wine:bdlauncher-runtime"
+screen -dmS servername /bin/bash -c "docker run --rm -ti --name servername -p 19132:19132/udp -v dirName/:/data codehz/wine:bdlauncher-runtime"
