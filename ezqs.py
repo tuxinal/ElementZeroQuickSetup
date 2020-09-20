@@ -58,13 +58,13 @@ if os.path.exists("./start.sh"):
 urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/start.sh","start.sh")
 start = open("start.sh")
 startServer = open(serverName+"/start.sh","w+")
-startServer.write(start.read().replace("serverName",serverName).replace("dirName",fullDir))
+startServer.write(start.read().replace("servername",serverName).replace("dirname",fullDir))
 if os.path.exists("./stop.sh"):
     os.remove("./stop.sh")
 urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/stop.sh","stop.sh")
 stop = open("stop.sh")
 stopServer = open(serverName+"/stop.sh","w+")
-stopServer.write(stop.read().replace("serverName",serverName))
+stopServer.write(stop.read().replace("servername",serverName))
 if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
     os.remove(fileName)
