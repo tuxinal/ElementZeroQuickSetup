@@ -39,8 +39,8 @@ follow the instructions and you are done!
 there should be a new folder in the same directory that you ran the script `cd` into it and run `start.sh` and your server should be up and running!
 
 ## Work in progress
-- [ ] automatic world backups upon starting
+- [x] automatic world backups upon starting
  
-- [ ] check for updates upon starting
+- [x] check for updates upon starting
 
 - [ ] make a systemd service for auto starting
