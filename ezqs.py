@@ -64,7 +64,7 @@ if os.path.exists("./stop.sh"):
 urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/stop.sh","stop.sh")
 stop = open("stop.sh")
 stopServer = open(serverName+"/stop.sh","w+")
-stopServer.write(stop.read().replace("servername",serverName))
+stopServer.write(stop.read().replace("serverName",serverName))
 if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
     os.remove(fileName)
