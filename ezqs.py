@@ -40,17 +40,17 @@ else:
     ez = zipfile.ZipFile("./ez.zip")
     print("extracting...")
     ez.extractall()
-    for fileName in os.listdir(os.getcwd()):
-        if fileName.startswith("ElementZero"):
-            os.rename(fileName,serverName)
+    for BDSFileName in os.listdir(os.getcwd()):
+        if BDSFileName.startswith("ElementZero"):
+            os.rename(BDSFileName,serverName)
     print("done!")
 print("checking for the latest minecraft version...")
-link, fileName = findWindowsLink()
-if os.path.exists(fileName):
+link, BDSFileName = findWindowsLink()
+if os.path.exists(BDSFileName):
     print("\nlatest BDS is already downloaded!")
 else:
-    urllib.request.urlretrieve(link,fileName)
-mc = zipfile.ZipFile(fileName)
+    urllib.request.urlretrieve(link,BDSFileName)
+mc = zipfile.ZipFile(BDSFileName)
 mc.extractall(serverName)
 fullDir = os.getcwd()+"/"+serverName
 if os.path.exists("./start.sh"):
@@ -67,7 +67,7 @@ stopServer = open(serverName+"/stop.sh","w+")
 stopServer.write(stop.read().replace("serverName",serverName))
 if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
-    os.remove(fileName)
+    os.remove(BDSFileName)
     os.remove("version.html")
     os.remove("start.sh")
     os.remove("stop.sh")
