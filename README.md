@@ -43,4 +43,4 @@ there should be a new folder in the same directory that you ran the script `cd` 
  
 - [x] check for updates upon starting
 
-- [ ] make a systemd service for auto starting
+- [x] make a systemd service for auto starting
