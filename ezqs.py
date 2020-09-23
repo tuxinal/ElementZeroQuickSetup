@@ -4,12 +4,13 @@ import urllib.request
 import os.path
 import zipfile
 import subprocess
+from getpass import getpass
 def findWindowsLink():
     if os.path.exists("./version.html"):
         os.remove("./version.html")
     urllib.request.urlretrieve("https://minecraft.net/en-us/download/server/bedrock/","./version.html")
     # would be a bit nicer if this wasn't bash code
-    link = subprocess.Popen(["grep -o 'https://minecraft.azureedge.net/bin-win/[^\"]*' {}".format("./version.html")]
+    link = subprocess.Popen(["grep -o 'https://minecraft.azureedge.net/bin-win/[^\"]*' version.html"]
         ,stdout=subprocess.PIPE,shell=True,universal_newlines=True)
     linkName = link.stdout.read().rsplit()[0]
     fileName = linkName.split("/")
@@ -65,6 +66,28 @@ urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZer
 stop = open("stop.sh")
 stopServer = open(serverName+"/stop.sh","w+")
 stopServer.write(stop.read().replace("serverName",serverName))
+if input("do you want to auto start your server?[Y,n]") in ("Y","y",""):
+    serviceName = serverName+".service"
+    urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/minecraftbe.service",serviceName)
+    serviceFile = open(serviceName,"r")
+    serviceData = serviceFile.read().replace("servername",serverName).replace("dirname",fullDir)
+    serviceFile.close()
+    serviceFile = open(serviceName,"w")
+    serviceFile.write(serviceData)
+    serviceFile.close()
+    while True:
+        # this code is litrally put together with tape
+        sudoPassword = getpass()
+        passwordCheck = subprocess.Popen(["echo {} | sudo -S whoami".format(sudoPassword)],stdout=subprocess.PIPE,shell = True, text = True)
+        try:
+            user = passwordCheck.stdout.read().rsplit()[0]
+        except:
+            print("Error: password is probably wrong")
+            continue
+        break
+    # enable systemd service
+    subprocess.Popen(["sudo mv {} /etc/systemd/system/".format(serviceFile)], shell = True)
+    subprocess.Popen(["sudo systemd enable {}".format(serverName)], shell = True)
 if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
     os.remove(BDSFileName)
