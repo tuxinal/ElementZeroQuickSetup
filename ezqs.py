@@ -86,8 +86,8 @@ if input("do you want to auto start your server?[Y,n]") in ("Y","y",""):
             continue
         break
     # enable systemd service
-    subprocess.Popen(["sudo mv {} /etc/systemd/system/".format(serviceFile)], shell = True)
-    subprocess.Popen(["sudo systemd enable {}".format(serverName)], shell = True)
+    subprocess.Popen(["sudo mv {} /etc/systemd/system/".format(serviceName)], shell = True).wait()
+    subprocess.Popen(["sudo systemctl enable {}".format(serverName)], shell = True).wait()
 if input("delete downloaded files? [y,N]") in ("Y","y"):
     print("deleting junk...")
     os.remove(BDSFileName)
