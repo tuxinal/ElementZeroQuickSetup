@@ -66,6 +66,8 @@ urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZer
 stop = open("stop.sh")
 stopServer = open(serverName+"/stop.sh","w+")
 stopServer.write(stop.read().replace("serverName",serverName))
+os.mkdir("./{}/downloads".format(serverName))
+os.mkdir("./{}/backups".format(serverName))
 if input("do you want to auto start your server?[Y,n]") in ("Y","y",""):
     serviceName = serverName+".service"
     urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/minecraftbe.service",serviceName)
