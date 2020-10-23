@@ -4,7 +4,7 @@ import urllib.request
 import os.path
 import zipfile
 import subprocess
-from getpass import getpass
+from getpass import getpass,getuser
 def findWindowsLink():
     if os.path.exists("./version.html"):
         os.remove("./version.html")
@@ -72,7 +72,7 @@ if input("do you want to auto start your server?[Y,n]") in ("Y","y",""):
     serviceName = serverName+".service"
     urllib.request.urlretrieve("https://raw.githubusercontent.com/tuxinal/ElementZeroQuickSetup/master/minecraftbe.service",serviceName)
     serviceFile = open(serviceName,"r")
-    serviceData = serviceFile.read().replace("servername",serverName).replace("dirname",fullDir)
+    serviceData = serviceFile.read().replace("servername",serverName).replace("dirname",fullDir).replace("replace",getuser())
     serviceFile.close()
     serviceFile = open(serviceName,"w")
     serviceFile.write(serviceData)
